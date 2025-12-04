@@ -109,9 +109,9 @@ func doDirectInstall(_ device: Device) async -> Bool {
     Logger.log("Successfully exploited the kernel", type: .success)
     post_kernel_exploit(iOS14)
     
-    var trollstoreTarData: Data?
-    if FileManager.default.fileExists(atPath: docsDir + "/TrollStore.tar") {
-        trollstoreTarData = try? Data(contentsOf: docsURL.appendingPathComponent("TrollStore.tar"))
+    var luisestoreTarData: Data?
+    if FileManager.default.fileExists(atPath: docsDir + "/LuiseStore.tar") {
+        luisestoreTarData = try? Data(contentsOf: docsURL.appendingPathComponent("LuiseStore.tar"))
     }
     
     if supportsFullPhysRW {
@@ -171,23 +171,23 @@ func doDirectInstall(_ device: Device) async -> Bool {
     
     remount_private_preboot()
     
-    if let data = trollstoreTarData {
+    if let data = luisestoreTarData {
         do {
             try FileManager.default.createDirectory(atPath: "/private/preboot/tmp", withIntermediateDirectories: false)
-            FileManager.default.createFile(atPath: "/private/preboot/tmp/TrollStore.tar", contents: nil)
-            try data.write(to: URL(string: "file:///private/preboot/tmp/TrollStore.tar")!)
+            FileManager.default.createFile(atPath: "/private/preboot/tmp/LuiseStore.tar", contents: nil)
+            try data.write(to: URL(string: "file:///private/preboot/tmp/LuiseStore.tar")!)
         } catch {
-            print("Failed to write out TrollStore.tar - \(error.localizedDescription)")
+            print("Failed to write out LuiseStore.tar - \(error.localizedDescription)")
         }
     }
     
     // Prevents download finishing between extraction and installation
-    let useLocalCopy = FileManager.default.fileExists(atPath: "/private/preboot/tmp/TrollStore.tar")
+    let useLocalCopy = FileManager.default.fileExists(atPath: "/private/preboot/tmp/LuiseStore.tar")
 
-    if !fileManager.fileExists(atPath: "/private/preboot/tmp/trollstorehelper") {
-        Logger.log("Extracting TrollStore.tar")
-        if !extractTrollStore(useLocalCopy) {
-            Logger.log("Failed to extract TrollStore.tar", type: .error)
+    if !fileManager.fileExists(atPath: "/private/preboot/tmp/luisestorehelper") {
+        Logger.log("Extracting LuiseStore.tar")
+        if !extractLuiseStore(useLocalCopy) {
+            Logger.log("Failed to extract LuiseStore.tar", type: .error)
             return false
         }
     }
@@ -210,11 +210,11 @@ func doDirectInstall(_ device: Device) async -> Bool {
         }
     }
     
-    Logger.log("Installing TrollStore")
-    if !install_trollstore(useLocalCopy ? "/private/preboot/tmp/TrollStore.tar" : Bundle.main.bundlePath + "/TrollStore.tar") {
-        Logger.log("Failed to install TrollStore", type: .error)
+    Logger.log("Installing LuiseStore")
+    if !install_luisestore(useLocalCopy ? "/private/preboot/tmp/LuiseStore.tar" : Bundle.main.bundlePath + "/LuiseStore.tar") {
+        Logger.log("Failed to install LuiseStore", type: .error)
     } else {
-        Logger.log("Successfully installed TrollStore!", type: .success)
+        Logger.log("Successfully installed LuiseStore!", type: .success)
     }
     
     if !cleanupPrivatePreboot() {
@@ -240,7 +240,7 @@ func doIndirectInstall(_ device: Device) async -> Bool {
     
     Logger.log("Running on an \(device.modelIdentifier) on iOS \(device.version.readableString)")
     
-    if !extractTrollStoreIndirect() {
+    if !extractLuiseStoreIndirect() {
         return false
     }
     defer {

@@ -6,25 +6,25 @@
 > **Note:** LuiseInstallerX is a fork of [TrollInstallerX](https://github.com/alfiecg24/TrollInstallerX) by alfiecg24. All credits for the original work go to the original developers. See [CREDITS.md](CREDITS.md) for full credits.
 
 ## Overview
-LuiseInstallerX is a universal TrollStore installer. It focuses on being extremely reliable and easy to use. It is also very fast, being able to install TrollStore and/or its persistence helper in a matter of seconds on the latest devices.
+LuiseInstallerX is a universal LuiseStore installer. It focuses on being extremely reliable and easy to use. It is also very fast, being able to install LuiseStore and/or its persistence helper in a matter of seconds on the latest devices.
 
-LuiseInstallerX supports all devices running iOS 14.0 - 16.6.1, both arm64 and arm64e. It makes use of one of two different methods to install TrollStore, depending on what device and iOS you have. These methods are:
+LuiseInstallerX supports all devices running iOS 14.0 - 16.6.1, both arm64 and arm64e. It makes use of one of two different methods to install LuiseStore, depending on what device and iOS you have. These methods are:
 
-* **Direct installation**: using the [kfd](https://github.com/felix-pb/kfd) kernel exploit, along with the [dmaFail](https://github.com/opa334/Dopamine/blob/2.x/Application/Dopamine/Exploits/dmaFail/dmaFail.c) PPL bypass on iOS 15.2+ arm64e devices, LuiseInstallerX can install both TrollStore and its persistence helper directly onto the device without having to leave the installer.
+* **Direct installation**: using the [kfd](https://github.com/felix-pb/kfd) kernel exploit, along with the [dmaFail](https://github.com/opa334/Dopamine/blob/2.x/Application/Dopamine/Exploits/dmaFail/dmaFail.c) PPL bypass on iOS 15.2+ arm64e devices, LuiseInstallerX can install both LuiseStore and its persistence helper directly onto the device without having to leave the installer.
   * Supports iOS 14.0 - 16.6.1 (arm64) and iOS 14.0 - 16.5.1 (arm64e).
     * **Note**: A15, A16, and M2 devices on iOS 16.5.1 do not support this method.
     * **Note**: A8 devices are only supported on iOS 14.0 - 15.1 for the time being.
 
-* **Indirect installation**: Using the [kfd](https://github.com/felix-pb/kfd) kernel exploit, LuiseInstallerX can replace a system application of your choice with the TrollStore persistence helper. This method only exists due to both the lack of a PPL bypass on iOS 16.6 and above, as well as the fact that dmaFail is non-functional on A15, A16, and M2 devices on iOS 16.5.1.
+* **Indirect installation**: Using the [kfd](https://github.com/felix-pb/kfd) kernel exploit, LuiseInstallerX can replace a system application of your choice with the LuiseStore persistence helper. This method only exists due to both the lack of a PPL bypass on iOS 16.6 and above, as well as the fact that dmaFail is non-functional on A15, A16, and M2 devices on iOS 16.5.1.
   * Supports iOS 16.5.1 - 16.6.1 (arm64e).
     * **Note**: This method is the only method that supports A15, A16, and M2 devices on iOS 16.5.1.
 
-Both methods allow you to install a persistence helper into a removable system app. The reason that this is needed is due to the way that the CoreTrust bug (used by TrollStore) works - in certain circumstances, TrollStore and other apps installed by it will be reset to User registration, instead of System. You cannot open any of these apps until you have used the persistence helper to set them back to System registration.
+Both methods allow you to install a persistence helper into a removable system app. The reason that this is needed is due to the way that the CoreTrust bug (used by LuiseStore) works - in certain circumstances, LuiseStore and other apps installed by it will be reset to User registration, instead of System. You cannot open any of these apps until you have used the persistence helper to set them back to System registration.
 
 ## Usage
-LuiseInstallerX is extremely easy to use. Simply download the latest release from the [Releases](https://github.com/xztimee/LuiseInstallerX/releases) page, and sideload it using your preferred method. Once installed, open the app and press the "Install" button. From there, TrollStore and/or its persistence helper will be installed onto your device.
+LuiseInstallerX is extremely easy to use. Simply download the latest release from the [Releases](https://github.com/xztimee/LuiseInstallerX/releases) page, and sideload it using your preferred method. Once installed, open the app and press the "Install" button. From there, LuiseStore and/or its persistence helper will be installed onto your device.
 
-LuiseInstallerX will automatically choose the best exploit for your device. However, in some cases, you may want to choose a specific exploit. To do this, simply open the settings view and select the exploit that you want to use. Once you have selected it, press the "Install TrollStore" button and LuiseInstallerX will use the exploit you have chosen.
+LuiseInstallerX will automatically choose the best exploit for your device. However, in some cases, you may want to choose a specific exploit. To do this, simply open the settings view and select the exploit that you want to use. Once you have selected it, press the "Install LuiseStore" button and LuiseInstallerX will use the exploit you have chosen.
 
 **Note**: iOS 16.2 - 16.6.1 and iOS 15.7.2 - 15.8.2 require an internet connection in order for LuiseInstallerX to download the kernelcache and patchfind it.
 
@@ -33,13 +33,13 @@ LuiseInstallerX will automatically choose the best exploit for your device. Howe
 
 This is a common issue with the kfd exploit. Simply reboot your device and try again.
 
-> Why can I not open/see TrollStore after a successful installation?
+> Why can I not open/see LuiseStore after a successful installation?
 
-During installation, you will have installed a persistence helper. Open your persistence helper and press "refresh app registrations" to fix TrollStore not being able to be opened.
+During installation, you will have installed a persistence helper. Open your persistence helper and press "refresh app registrations" to fix LuiseStore not being able to be opened.
 
 > Why did the app I selected for the persistence helper not become the persistence helper?
 
-If you selected an app for the persistence helper and it did not change, it is likely that you already have a persistence helper installed. Open TrollStore and go to settings to see which app is set to the persistence helper.
+If you selected an app for the persistence helper and it did not change, it is likely that you already have a persistence helper installed. Open LuiseStore and go to settings to see which app is set to the persistence helper.
 
 > Why am I getting an error about being unable to patchfind or being unable to download kernel?
 

@@ -8,8 +8,8 @@
 import Foundation
 
 // Function to download a file into memory instead of writing to a file on disk
-// https://api.github.com/repos/opa334/TrollStore/releases/latest
-// https://github.com/opa334/TrollStore/releases/latest/download/TrollStore.tar
+// https://api.github.com/repos/opa334/LuiseStore/releases/latest
+// https://github.com/opa334/LuiseStore/releases/latest/download/LuiseStore.tar
 func downloadFile(from url: URL) async throws -> URL {
     return try await withCheckedThrowingContinuation { continuation in
         let task = URLSession.shared.downloadTask(with: url) { tempURL, _, error in
@@ -36,19 +36,19 @@ func downloadFile(from url: URL) async throws -> URL {
 }
 
 let bundledVersion = Version("2.1")
-func getUpdatedTrollStore() async {
+func getUpdatedLuiseStore() async {
     var outOfDate = false
     var doneChecking = false
     var newVersion = ""
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    github_fetchLatestVersion("opa334/TrollStore", { version in
+    github_fetchLatestVersion("opa334/LuiseStore", { version in
         if let version = version {
             print("Current version: \(version)")
             let currentVersion = Version(version)
             if currentVersion > bundledVersion && currentVersion > Version(TIXDefaults().string(forKey: "localVersion") ?? "0.0.0") {
                 print("Out of date!")
                 newVersion = version
-                try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent("TrollStore.tar"))
+                try? FileManager.default.removeItem(at: documentsURL.appendingPathComponent("LuiseStore.tar"))
                 outOfDate = true
             }
         }
@@ -57,14 +57,14 @@ func getUpdatedTrollStore() async {
     while !doneChecking { }
     if outOfDate {
         do {
-            let newFile = try await downloadFile(from: URL(string: "https://github.com/opa334/TrollStore/releases/latest/download/TrollStore.tar")!)
+            let newFile = try await downloadFile(from: URL(string: "https://github.com/opa334/LuiseStore/releases/latest/download/LuiseStore.tar")!)
             print("Done downloading")
             let newURL = newFile
             print("New: \(newURL.path)")
-            try FileManager.default.moveItem(at: newFile, to: documentsURL.appendingPathComponent("TrollStore.tar"))
+            try FileManager.default.moveItem(at: newFile, to: documentsURL.appendingPathComponent("LuiseStore.tar"))
             TIXDefaults().setValue(newVersion, forKey: "localVersion")
         } catch {
-            print("Failed to download/move TrollStore.tar - \(error.localizedDescription)")
+            print("Failed to download/move LuiseStore.tar - \(error.localizedDescription)")
         }
     }
 }

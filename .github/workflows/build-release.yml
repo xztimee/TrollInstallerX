@@ -97,7 +97,7 @@ jobs:
             1. Download `LuiseInstallerX.ipa`
             2. Sideload using your preferred method (AltStore, Sideloadly, etc.)
             3. Open the app and tap "Install"
-            4. TrollStore will be installed on your device
+            4. LuiseStore will be installed on your device
             
             ### Supported Devices
             - iOS 14.0 - 16.6.1 (arm64)

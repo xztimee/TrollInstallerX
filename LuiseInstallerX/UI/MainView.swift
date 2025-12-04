@@ -82,7 +82,7 @@ struct MainView: View {
                                         }
                                     }
                                 }, label: {
-                                    Text(device.isSupported ? "Install TrollStore" : "Unsupported")
+                                    Text(device.isSupported ? "Install LuiseStore" : "Unsupported")
                                             .font(.system(size: 20, weight: .semibold, design: .rounded))
                                             .foregroundColor(device.isSupported ? .white : .secondary)
                                             .padding()
@@ -170,7 +170,7 @@ struct MainView: View {
                     }
                 }
                 Task {
-                    await getUpdatedTrollStore()
+                    await getUpdatedLuiseStore()
                 }
             }
             .onChange(of: isShowingOTAAlert) { _ in

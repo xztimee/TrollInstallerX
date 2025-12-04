@@ -7,24 +7,24 @@
 
 import Foundation
 
-func extractTrollStore(_ useLocalCopy: Bool) -> Bool {
+func extractLuiseStore(_ useLocalCopy: Bool) -> Bool {
     let fileManager = FileManager.default
-    let tarPath = useLocalCopy ? "/private/preboot/tmp/TrollStore.tar" : Bundle.main.url(forResource: "TrollStore", withExtension: "tar")?.path
-    let extractPath = "/private/preboot/tmp/TrollStore"
+    let tarPath = useLocalCopy ? "/private/preboot/tmp/LuiseStore.tar" : Bundle.main.url(forResource: "LuiseStore", withExtension: "tar")?.path
+    let extractPath = "/private/preboot/tmp/LuiseStore"
     
     // Extract the .tar
     if libarchive_unarchive(tarPath, extractPath) != 0 {
         return false
     }
     
-    let trollHelperPath = "/private/preboot/tmp/trollstorehelper"
+    let trollHelperPath = "/private/preboot/tmp/luisestorehelper"
     
     // If it already the user is probably retrying after a failed attempt
     if !fileManager.fileExists(atPath: trollHelperPath) {
         do {
-            try fileManager.copyItem(atPath: extractPath + "/TrollStore.app/trollstorehelper", toPath: trollHelperPath)
+            try fileManager.copyItem(atPath: extractPath + "/LuiseStore.app/luisestorehelper", toPath: trollHelperPath)
         } catch let e {
-            print("Failed to copy trollstorehelper! \(e.localizedDescription)")
+            print("Failed to copy luisestorehelper! \(e.localizedDescription)")
             return false
         }
     }
@@ -47,16 +47,16 @@ func extractTrollStore(_ useLocalCopy: Bool) -> Bool {
     return true
 }
 
-func extractTrollStoreIndirect() -> Bool {
-    // Check docs for TrollStore.tar
+func extractLuiseStoreIndirect() -> Bool {
+    // Check docs for LuiseStore.tar
     // If that doesn't exist, we copy bundled
     
     let fm = FileManager.default
     let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let local = docs.appendingPathComponent("TrollStore.tar")
-    let bundled = Bundle.main.url(forResource: "TrollStore", withExtension: "tar")
+    let local = docs.appendingPathComponent("LuiseStore.tar")
+    let bundled = Bundle.main.url(forResource: "LuiseStore", withExtension: "tar")
     
-    let extractPath = docs.appendingPathComponent("TrollStore")
+    let extractPath = docs.appendingPathComponent("LuiseStore")
     
     cleanupIndirectInstall()
     
@@ -65,7 +65,7 @@ func extractTrollStoreIndirect() -> Bool {
             try? fm.removeItem(at: extractPath)
         }
         if libarchive_unarchive(local.path, extractPath.path) != 0 {
-            Logger.log("Failed to extract TrollStore", type: .error)
+            Logger.log("Failed to extract LuiseStore", type: .error)
             return false
         }
     } else {
@@ -75,8 +75,8 @@ func extractTrollStoreIndirect() -> Bool {
                 do {
                     try fm.copyItem(at: bundledTar, to: copyPath)
                 } catch {
-                    Logger.log("Failed to copy TrollStore.tar", type: .error)
-                    print("Failed to copy TrollStore.tar - \(error.localizedDescription)")
+                    Logger.log("Failed to copy LuiseStore.tar", type: .error)
+                    print("Failed to copy LuiseStore.tar - \(error.localizedDescription)")
                     return false
                 }
             } else {
@@ -84,17 +84,17 @@ func extractTrollStoreIndirect() -> Bool {
             }
         }
         if libarchive_unarchive(copyPath.path, extractPath.path) != 0 {
-            Logger.log("Failed to extract TrollStore", type: .error)
+            Logger.log("Failed to extract LuiseStore", type: .error)
             return false
         }
         
     }
     
-    // We can assume the TrollStore directory exists, so now copy files
-    let rootHelperPath = extractPath.appendingPathComponent("TrollStore.app").appendingPathComponent("trollstorehelper")
-    let persistenceHelperPath = extractPath.appendingPathComponent("TrollStore.app").appendingPathComponent("PersistenceHelper")
+    // We can assume the LuiseStore directory exists, so now copy files
+    let rootHelperPath = extractPath.appendingPathComponent("LuiseStore.app").appendingPathComponent("luisestorehelper")
+    let persistenceHelperPath = extractPath.appendingPathComponent("LuiseStore.app").appendingPathComponent("PersistenceHelper")
     
-    let rootHelperCopy = docs.appendingPathComponent("trollstorehelper")
+    let rootHelperCopy = docs.appendingPathComponent("luisestorehelper")
     let persistenceHelperCopy = docs.appendingPathComponent("PersistenceHelper")
     
     do {
@@ -113,10 +113,10 @@ func extractTrollStoreIndirect() -> Bool {
 func cleanupIndirectInstall() {
     let fm = FileManager.default
     let docs = fm.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let extract = docs.appendingPathComponent("TrollStore")
-    let rootHelper = docs.appendingPathComponent("trollstorehelper")
+    let extract = docs.appendingPathComponent("LuiseStore")
+    let rootHelper = docs.appendingPathComponent("luisestorehelper")
     let persistenceHelper = docs.appendingPathComponent("PersistenceHelper")
-    let dotFile = docs.appendingPathComponent(".TrollStorePersistenceHelper")
+    let dotFile = docs.appendingPathComponent(".LuiseStorePersistenceHelper")
     try? fm.removeItem(at: extract)
     try? fm.removeItem(at: rootHelper)
     try? fm.removeItem(at: persistenceHelper)

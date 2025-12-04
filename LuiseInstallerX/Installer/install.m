@@ -12,14 +12,14 @@
 
 #import "run.h"
 
-// Install TrollStore
-bool install_trollstore(NSString *tar) {
+// Install LuiseStore
+bool install_luisestore(NSString *tar) {
     NSString *stdout;
-    NSString *helperPath = @"/private/preboot/tmp/trollstorehelper";
+    NSString *helperPath = @"/private/preboot/tmp/luisestorehelper";
     chmod(helperPath.UTF8String, 0755);
     chown(helperPath.UTF8String, 0, 0);
-    int ret = run_binary(helperPath, @[@"install-trollstore", tar], &stdout);
-    printf("trollstorehelper output: %s\n", [stdout UTF8String]);
+    int ret = run_binary(helperPath, @[@"install-luisestore", tar], &stdout);
+    printf("luisestorehelper output: %s\n", [stdout UTF8String]);
     return ret == 0;
 }
 
@@ -48,10 +48,10 @@ NSString *find_path_for_app(NSString *appName) {
 
 bool install_persistence_helper(NSString *app) {
     NSString *stdout;
-    NSString *helperPath = @"/private/preboot/tmp/trollstorehelper";
-    NSString *persistenceHelperPath = @"/private/preboot/tmp/TrollStore/TrollStore.app/PersistenceHelper";
+    NSString *helperPath = @"/private/preboot/tmp/luisestorehelper";
+    NSString *persistenceHelperPath = @"/private/preboot/tmp/LuiseStore/LuiseStore.app/PersistenceHelper";
     int ret = run_binary(helperPath, @[@"install-persistence-helper", app, persistenceHelperPath, helperPath], &stdout);
-    printf("trollstorehelper returned %d\n", ret);
-    printf("trollstorehelper output: %s\n", [stdout UTF8String]);
+    printf("luisestorehelper returned %d\n", ret);
+    printf("luisestorehelper output: %s\n", [stdout UTF8String]);
     return ret == 0;
 }
