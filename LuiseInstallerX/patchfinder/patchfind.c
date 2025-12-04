@@ -1,6 +1,6 @@
 //
 //  patchfind.c
-//  TrollInstallerX
+//  LuiseInstallerX (originally TrollInstallerX)
 //
 //  Created by Alfie on 22/03/2024.
 //

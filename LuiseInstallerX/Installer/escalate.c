@@ -1,6 +1,6 @@
 //
 //  escalate.c
-//  TrollInstallerX
+//  LuiseInstallerX (originally TrollInstallerX)
 //
 //  Created by Alfie on 22/03/2024.
 //
@@ -39,7 +39,7 @@ gid_t backup_groupList[200];
 // 14.0 - 14.8.1 (arm64)
 bool get_root_krw(bool iOS14) {
     
-    // Get the address of our (TrollInstallerX) proc structure
+    // Get the address of our (LuiseInstallerX) proc structure
     uint64_t proc = gSystemInfo.kernelConstant.currentProc;
     
     printf("Attempting Xina escalation method...\n");
@@ -71,7 +71,7 @@ bool drop_root_krw(bool iOS14) {
     if (getuid() != 0) return true;
     printf("Dropping root...\n");
     
-    // Get the address of our (TrollInstallerX) proc structure
+    // Get the address of our (LuiseInstallerX) proc structure
     uint64_t proc = gSystemInfo.kernelConstant.currentProc;
     
     int error = setgroups(backup_groupSize, backup_groupList);
