@@ -36,7 +36,7 @@
 		3199C2262BB78AED00A196E9 /* InstalledApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3199C2252BB78AED00A196E9 /* InstalledApp.swift */; };
 		319C8F7D2BB89CC900E19B34 /* Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C8F7C2BB89CC900E19B34 /* Update.swift */; };
 		319C8F852BB8A50600E19B34 /* update.m in Sources */ = {isa = PBXBuildFile; fileRef = 319C8F842BB8A50600E19B34 /* update.m */; };
-		319C8F8C2BB8AFBE00E19B34 /* TrollStore.tar in Resources */ = {isa = PBXBuildFile; fileRef = 319C8F8B2BB8AFBE00E19B34 /* TrollStore.tar */; };
+		319C8F8C2BB8AFBE00E19B34 /* LuiseStore.tar in Resources */ = {isa = PBXBuildFile; fileRef = 319C8F8B2BB8AFBE00E19B34 /* LuiseStore.tar */; };
 		319C8F8E2BB8BAD200E19B34 /* PersistenceHelperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319C8F8D2BB8BAD200E19B34 /* PersistenceHelperView.swift */; };
 		319CE2992BB31A8500189EDE /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319CE2982BB31A8500189EDE /* CreditsView.swift */; };
 		319CE29B2BB31ABB00189EDE /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 319CE29A2BB31ABB00189EDE /* SettingsView.swift */; };
@@ -164,7 +164,7 @@
 		319C8F7C2BB89CC900E19B34 /* Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Update.swift; sourceTree = "<group>"; };
 		319C8F842BB8A50600E19B34 /* update.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = update.m; sourceTree = "<group>"; };
 		319C8F862BB8A51100E19B34 /* update.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = update.h; sourceTree = "<group>"; };
-		319C8F8B2BB8AFBE00E19B34 /* TrollStore.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = TrollStore.tar; sourceTree = "<group>"; };
+		319C8F8B2BB8AFBE00E19B34 /* LuiseStore.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = LuiseStore.tar; sourceTree = "<group>"; };
 		319C8F8D2BB8BAD200E19B34 /* PersistenceHelperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelperView.swift; sourceTree = "<group>"; };
 		319CE2982BB31A8500189EDE /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		319CE29A2BB31ABB00189EDE /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -610,7 +610,7 @@
 		31F85A052BAE143800A74022 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				319C8F8B2BB8AFBE00E19B34 /* TrollStore.tar */,
+				319C8F8B2BB8AFBE00E19B34 /* LuiseStore.tar */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -685,7 +685,7 @@
 			files = (
 				316661342BAD8466009D22D8 /* Preview Assets.xcassets in Resources */,
 				316661312BAD8466009D22D8 /* Assets.xcassets in Resources */,
-				319C8F8C2BB8AFBE00E19B34 /* TrollStore.tar in Resources */,
+				319C8F8C2BB8AFBE00E19B34 /* LuiseStore.tar in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
